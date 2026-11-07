@@ -1,0 +1,22 @@
+# Terraform working files
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+
+# Terraform variable files
+terraform.tfvars
+*.auto.tfvars
+
+# AWS credentials and configuration
+.aws/
+credentials
+config
+
+# Local environment files
+.env
+.env.*
+
+*.tfvars.json
+crash.*.log
