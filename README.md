@@ -1,106 +1,111 @@
 ﻿# AWS Cloud Data Migration Lab
 
-## Overview
+<p align="center">
+  <strong>Cloud Storage | Infrastructure as Code | Data Migration | AWS Security</strong>
+</p>
 
-This project involved migrating a sample dataset from a local Windows environment to Amazon Web Services (AWS) using Amazon S3. Terraform was used to provision the cloud infrastructure, and AWS CLI was used to transfer the data and verify the configuration.
+---
 
-The project focused on moving data into cloud storage while implementing security controls to protect the destination environment.
+## Project Overview
 
-## Project Goals
+This project demonstrates a cloud data migration workflow using Amazon Web Services (AWS), Terraform, and the AWS Command Line Interface (CLI). The objective was to provision secure cloud storage, migrate a sample dataset from a local Windows environment into Amazon S3, and validate the destination infrastructure and security configurations.
 
-- Provision an Amazon S3 bucket using Terraform.
-- Transfer a local CSV file into AWS using AWS CLI.
-- Configure server-side encryption for stored data.
-- Enable S3 Block Public Access settings.
-- Verify the uploaded file and review the bucket configuration.
-- Document the migration process and validation results.
+Terraform was used to provision and manage the Amazon S3 infrastructure, while AWS CLI was used to authenticate to AWS, transfer the sample dataset, and verify the deployed configuration.
 
-## Technologies Used
+The project emphasizes Infrastructure as Code (IaC), cloud storage management, data migration, and security configuration.
 
-- Amazon Web Services (AWS)
-- Amazon S3
-- Terraform
-- AWS CLI
-- IAM Identity Center
-- Windows PowerShell
-- Git and GitHub
+## Project Objectives
 
-## Cloud Infrastructure
+<ul>
+  <li>Provision an Amazon S3 bucket using Terraform.</li>
+  <li>Configure secure cloud storage in the US East (N. Virginia) region.</li>
+  <li>Migrate a local CSV dataset into Amazon S3 using AWS CLI.</li>
+  <li>Implement server-side encryption using Amazon S3-managed keys.</li>
+  <li>Configure all four Amazon S3 Block Public Access settings.</li>
+  <li>Validate deployed infrastructure using Terraform and AWS CLI.</li>
+  <li>Document the migration workflow, security configurations, and validation results.</li>
+</ul>
 
-An Amazon S3 bucket was created and configured using Terraform.
+## Tools and Technologies
 
-- Bucket name: aws-cloud-migration-647625
-- AWS Region: us-east-1 (N. Virginia)
-- Storage service: Amazon S3
-- Migrated file: partners.csv
+| Technology | Purpose |
+|---|---|
+| Amazon Web Services (AWS) | Cloud infrastructure and storage platform |
+| Amazon S3 | Object storage and migration destination |
+| Terraform | Infrastructure as Code |
+| AWS CLI | Authentication, file transfers, and verification |
+| IAM Identity Center | Centralized AWS authentication |
+| Windows PowerShell | Local command-line environment |
+| Git and GitHub | Version control and documentation |
 
-Terraform was used to define and manage the S3 bucket and its security configurations. The infrastructure configuration was separated into individual files to make the project easier to maintain.
+## Architecture
 
-## Security Configuration
+The migration workflow uses a local Windows environment as the source and Amazon S3 as the cloud destination.
 
-### Server-Side Encryption
+Terraform manages the provisioning and configuration of the S3 infrastructure, while AWS CLI performs the actual data transfer.
 
-Configured default server-side encryption using Amazon S3-managed encryption keys (SSE-S3).
+**Architecture Components:**
 
-- Encryption algorithm: AES-256
-- Key management: Amazon S3-managed keys
-- Encryption configuration verified using AWS CLI.
+<ul>
+  <li>Local Windows environment containing the sample dataset.</li>
+  <li>AWS CLI used to upload the CSV file.</li>
+  <li>Terraform configuration used to provision the S3 infrastructure.</li>
+  <li>Amazon S3 bucket used to store the migrated dataset.</li>
+  <li>S3 security configurations protecting stored data and restricting public access.</li>
+</ul>
 
-### Block Public Access
+<!-- Insert architecture diagram here when completed. -->
 
-Enabled all four Amazon S3 Block Public Access settings to help prevent unauthorized public access to the bucket.
+## Implementation
 
-- Block public ACLs
-- Ignore public ACLs
-- Block public bucket policies
-- Restrict public bucket access
+### 1. AWS Environment and Authentication Setup
 
-The configuration was verified using AWS CLI commands.
+Prepared the local Windows environment for AWS infrastructure deployment and data migration.
 
-## Data Migration
+<ul>
+  <li>Configured AWS CLI.</li>
+  <li>Established authentication through IAM Identity Center.</li>
+  <li>Configured the AWS CLI profile named <code>security-lab</code>.</li>
+  <li>Selected the US East (N. Virginia) region (<code>us-east-1</code>).</li>
+  <li>Verified AWS account access using AWS STS.</li>
+</ul>
 
-Created a sample CSV dataset named partners.csv in the local sample-data directory.
+### 2. Infrastructure Provisioning with Terraform
 
-Used AWS CLI to transfer the file from the Windows environment into the Amazon S3 bucket.
+Created Terraform configuration files to define and provision the Amazon S3 infrastructure.
 
-After the upload, verified that the object was present in the destination bucket using AWS CLI.
+The infrastructure configuration includes:
 
-The migration validation report is available in the migration-reports directory.
+<ul>
+  <li>Amazon S3 bucket.</li>
+  <li>S3 Block Public Access configuration.</li>
+  <li>S3 server-side encryption configuration.</li>
+</ul>
 
-## Infrastructure Validation
+Terraform was used to initialize the working directory, deploy the infrastructure, and compare the deployed resources against the configuration.
 
-Terraform was used to validate the deployed infrastructure against the configuration files.
+The final Terraform plan reported that no changes were necessary, confirming that the deployed infrastructure matched the Terraform configuration.
 
-The final Terraform plan reported that no changes were necessary and that the deployed infrastructure matched the configuration.
+### 3. Amazon S3 Security Configuration
 
-Additional AWS CLI checks were performed to verify:
+Implemented security controls to protect the destination storage environment.
 
-- S3 bucket location
-- Uploaded file presence
-- Default encryption configuration
-- Block Public Access settings
+**Server-Side Encryption (SSE-S3)**
 
-## Repository Contents
+Configured default server-side encryption for objects stored in the S3 bucket.
 
-- architecture: Architecture diagram for the migration workflow.
-- documentation: Supporting project documentation.
-- evidence: Screenshots of AWS configurations and migration results.
-- migration-reports: Migration validation report.
-- sample-data: Sample CSV file used for the migration.
-- terraform: Terraform configuration files used to provision the AWS infrastructure.
+<ul>
+  <li>Encryption algorithm: AES-256.</li>
+  <li>Encryption method: SSE-S3.</li>
+  <li>Key management: Amazon S3-managed keys.</li>
+</ul>
 
-## Skills Developed
+**S3 Block Public Access**
 
-- AWS cloud storage configuration
-- Terraform and Infrastructure as Code
-- AWS CLI and PowerShell
-- Cloud data migration
-- S3 encryption and access controls
-- Infrastructure validation
-- Git and GitHub version control
+Enabled all four S3 Block Public Access settings:
 
-## Project Results
-
-Successfully provisioned an Amazon S3 bucket using Terraform, transferred a sample CSV dataset from a local Windows environment into AWS, and verified the destination bucket's encryption and public access configurations.
-
-This project provided practical experience with AWS storage services, infrastructure automation, cloud security configurations, and data migration workflows.
+<ul>
+  <li>Block Public ACLs.</li>
+  <li>Ignore Public ACLs.</li>
+  <li>Block Public Bucket Policies.</li>
+  <li>Restrict Public
