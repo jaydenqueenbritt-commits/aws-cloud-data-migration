@@ -1,6 +1,5 @@
 # AWS Cloud Data Migration Lab
 
----
 
 ## Project Overview
 
