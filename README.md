@@ -1,4 +1,4 @@
-﻿# AWS Cloud Data Migration Lab
+# AWS Cloud Data Migration Lab
 
 <p align="center">
   <strong>Cloud Storage | Infrastructure as Code | Data Migration | AWS Security</strong>
@@ -108,4 +108,137 @@ Enabled all four S3 Block Public Access settings:
   <li>Block Public ACLs.</li>
   <li>Ignore Public ACLs.</li>
   <li>Block Public Bucket Policies.</li>
-  <li>Restrict Public
+  <li>Restrict Public Bucket Access.</li>
+</ul>
+
+These configurations help prevent unintended public exposure of the bucket and its objects.
+
+### 4. Data Migration
+
+Created a sample CSV dataset named <code>partners.csv</code> within the local <code>sample-data</code> directory.
+
+Used AWS CLI to transfer the file from the local Windows environment into the provisioned Amazon S3 bucket.
+
+**Migration Details:**
+
+<ul>
+  <li>Source: Local Windows environment.</li>
+  <li>Source file: <code>partners.csv</code>.</li>
+  <li>Destination: Amazon S3.</li>
+  <li>Bucket: <code>aws-cloud-migration-647625</code>.</li>
+  <li>Region: <code>us-east-1</code>.</li>
+</ul>
+
+After the upload, AWS CLI was used to verify that the object was present in the destination bucket.
+
+### 5. Infrastructure and Migration Validation
+
+Performed validation checks to confirm that the infrastructure was deployed correctly and the migration was completed.
+
+**Terraform Validation**
+
+<ul>
+  <li>Reviewed the deployed infrastructure using Terraform.</li>
+  <li>Executed a final Terraform plan.</li>
+  <li>Confirmed that no additional infrastructure changes were required.</li>
+</ul>
+
+**AWS CLI Validation**
+
+<ul>
+  <li>Verified the S3 bucket.</li>
+  <li>Checked the bucket location.</li>
+  <li>Confirmed that <code>partners.csv</code> was present in the destination bucket.</li>
+  <li>Retrieved the default server-side encryption configuration.</li>
+  <li>Verified all four Block Public Access settings.</li>
+</ul>
+
+The validation results are documented in the <code>migration-reports</code> directory.
+
+## Security Considerations
+
+Security was incorporated into the storage environment through encryption and access restrictions.
+
+The project implemented the following controls:
+
+<ul>
+  <li>Default server-side encryption using SSE-S3.</li>
+  <li>AES-256 encryption for stored objects.</li>
+  <li>Amazon S3-managed encryption keys.</li>
+  <li>All four S3 Block Public Access settings enabled.</li>
+  <li>AWS authentication through IAM Identity Center.</li>
+  <li>Terraform-managed infrastructure configuration.</li>
+</ul>
+
+These controls demonstrate basic cloud storage security practices and help reduce the risk of unauthorized public access and exposure of stored data.
+
+## Repository Structure
+
+<pre>
+aws-cloud-data-migration/
+│
+├── architecture/
+├── documentation/
+├── evidence/
+│
+├── migration-reports/
+│   └── migration-validation-report.md
+│
+├── sample-data/
+│   └── partners.csv
+│
+├── terraform/
+│   ├── main.tf
+│   ├── provider.tf
+│   ├── variables.tf
+│   ├── outputs.tf
+│   └── .terraform.lock.hcl
+│
+├── .gitignore
+└── README.md
+</pre>
+
+## Evidence and Documentation
+
+Project evidence and supporting documentation are organized within the repository.
+
+Evidence includes or will include:
+
+<ul>
+  <li>Amazon S3 bucket configuration.</li>
+  <li>S3 server-side encryption settings.</li>
+  <li>S3 Block Public Access configuration.</li>
+  <li>Uploaded CSV object in Amazon S3.</li>
+  <li>Terraform infrastructure deployment and validation.</li>
+  <li>AWS CLI verification results.</li>
+  <li>Completed architecture diagram.</li>
+</ul>
+
+The migration validation report is available in <code>migration-reports/migration-validation-report.md</code>.
+
+## Skills Demonstrated
+
+<ul>
+  <li>AWS cloud infrastructure provisioning.</li>
+  <li>Amazon S3 storage configuration.</li>
+  <li>Terraform and Infrastructure as Code.</li>
+  <li>AWS CLI and PowerShell.</li>
+  <li>Cloud data migration workflows.</li>
+  <li>Server-side encryption and access controls.</li>
+  <li>IAM Identity Center authentication.</li>
+  <li>Infrastructure validation and troubleshooting.</li>
+  <li>Git and GitHub version control.</li>
+  <li>Technical documentation.</li>
+</ul>
+
+## Project Outcome
+
+Successfully provisioned an Amazon S3 storage environment using Terraform, migrated a sample CSV dataset from a local Windows environment into AWS, and verified the destination bucket's encryption and public access configurations.
+
+This project provided practical experience with cloud storage services, Infrastructure as Code, AWS command-line operations, data migration workflows, and cloud security fundamentals.
+
+## Security Notice
+
+This repository is intended for educational and portfolio purposes.
+
+AWS credentials, access keys, Terraform state files, and other sensitive configuration files should not be committed to version control. The repository's <code>.gitignore</code> excludes local Terraform state and variable files, along with AWS credential and environment files.
