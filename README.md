@@ -1,9 +1,5 @@
 # AWS Cloud Data Migration Lab
 
-<p align="center">
-  <strong>Cloud Storage | Infrastructure as Code | Data Migration | AWS Security</strong>
-</p>
-
 ---
 
 ## Project Overview
